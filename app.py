@@ -3,11 +3,14 @@ import streamlit as st
 import pandas as pd
 from transformers import pipeline
 
+
 model_name = "sshleifer/distilbart-cnn-12-6"
 model_revision = "a4f8f3e"
 
-summarizer = pipeline("summarization", model=model_name, revision=model_revision)
-
+@st.cache
+def load_model():
+    return pipeline("summarization", model=model_name, revision=model_revision)
+summarizer = load_model
 
 # Define a function to generate summaries
 def generate_summary(text):
