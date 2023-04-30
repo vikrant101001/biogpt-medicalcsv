@@ -10,7 +10,7 @@ model_revision = "a4f8f3e"
 @st.cache
 def load_model():
     return pipeline("summarization", model=model_name, revision=model_revision)
-summarizer = load_model
+summarizer = load_model()
 
 # Define a function to generate summaries
 def generate_summary(text):
